@@ -29,15 +29,10 @@ export default function Home() {
 
     if (!file) return;
 
+    resetAllEdits();
+
     const _startingIndex = 0;
     const _endingIndex = 1000;
-
-    setSearchKeyword("");
-    setStartingIndex(_startingIndex);
-    setEndingIndex(_endingIndex);
-    setNumberOfRowsToShow(1000);
-    setCurrentPage(1);
-    setSearching(false);
 
     Papa.parse(file, {
       header: true,
@@ -53,7 +48,7 @@ export default function Home() {
         setCsvDataOriginal(data);
         setCsvDataHidden(data);
         setCsvDataHidden2(data);
-        setCsvData(data.slice(startingIndex, endingIndex));
+        setCsvData(data.slice(_startingIndex, _endingIndex));
 
         setLoading(false);
       },
